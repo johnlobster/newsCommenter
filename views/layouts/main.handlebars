@@ -12,9 +12,9 @@
     integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
     integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-  <title>Booker</title>
+  <title>Scraper</title>
   <script src="https://rawgit.com/moment/moment/2.2.1/min/moment.min.js"></script>
-  <link rel="stylesheet" type="text/css" href="styles/styles.css">
+  <link rel="stylesheet" type="text/css" href="css/index.css">
   <!-- fonts -->
   <link href="https://fonts.googleapis.com/css?family=Bitter&display=swap" rel="stylesheet">
 
@@ -24,46 +24,17 @@
 
   <header>
       <div >
-        <span id="logoBox"> <img src="./images/recBooker_logo.svg" alt="recBooker logo" style="height:50px;"> </span>
+        <span id="logoBox">
+          <h1>Onion scrapings</h1>
+        </span>
       </div>
   </header>
 
   {{{body}}}
 
-  <!-- modal for logout nav button click (present on every page) -->
-  <div class="modal fade" id="logoutModal" tabindex="-1">
-    <div class="modal-dialog modal-dialog-centered modal-sm" role="document">
-      <div class="modal-content">
-
-        <div class="modal-header">
-          <h2>Logout</h2>
-          <button type="button" class="close" id="closeInstructions1"
-            data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
   
-        <div class="modal-body">
-          <h4 id="logoutModalText1"></h4>
-          <h4 id="logoutModalText2"></h4>
-
-        </div>
-  
-        <div class="modal-footer">
-          <a href="/"> 
-            <button class="btn btn-primary">Home page</button>
-          </a>
-          <button type="button btn-sm" id="closeInstructions2"
-            class="btn btn-secondary" data-dismiss="modal">Close</button>
-        </div>
-
-      </div>
-    </div>
-  </div>
 
 </body>
 
-<!-- navButtons script used on every page, so added in main -->
-<script src="./js/navButtons.js"></script>
 
 </html>
