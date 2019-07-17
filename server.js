@@ -10,6 +10,19 @@ const exphbs = require("express-handlebars");
 const winston = require('winston');
 const morgan = require('morgan');
 
+const infLogger = require("./routes/debug.js")(winston, "server");
+//console.log("debug");
+//console.log(dbug);
+// const inf = dbug(winston,"server.js");
+//console.log("info");
+//console.log(inf);
+// inf.info("Hello this is a log");
+infLogger("Cool logging");
+// infme = function(msg) {
+//   return inf.info(msg);
+// };
+// infme("Another log");
+
 // set up for different modes
 process.env.NODE_ENV = process.env.NODE_ENV || "development";
 const PORT = process.env.PORT || 8080;
