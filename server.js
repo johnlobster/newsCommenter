@@ -1,31 +1,25 @@
 // main entry to newsCommenter - the server
 
 require("dotenv").config(); // add variables in .env file to process.env
+// set up for different modes, reading .env
+process.env.NODE_ENV = process.env.NODE_ENV || "development";
+const PORT = process.env.PORT || 8080;
+
 const express = require("express");
 const mongoose = require("mongoose");
 const exphbs = require("express-handlebars");
 
 
 // winston for debug/logging, morgan for http requests
-const winston = require('winston');
 const morgan = require('morgan');
 
-const infLogger = require("./routes/debug.js")(winston, "server");
-//console.log("debug");
-//console.log(dbug);
-// const inf = dbug(winston,"server.js");
-//console.log("info");
-//console.log(inf);
-// inf.info("Hello this is a log");
-infLogger("Cool logging");
-// infme = function(msg) {
-//   return inf.info(msg);
-// };
-// infme("Another log");
+// creates logging functions with label server.js
+let {wError, wInfo, wDebug} = require("./routes/debug.js")("server.js");
 
-// set up for different modes
-process.env.NODE_ENV = process.env.NODE_ENV || "development";
-const PORT = process.env.PORT || 8080;
+// test logging
+wInfo("Cool logging, we got %s", "something good");
+wError("An error");
+wDebug("Debug info");
 
 // Load all models and initialize
 const db = require("./models");
@@ -57,7 +51,7 @@ require("./routes/html-routes")(app);
 
 // Start the server
 app.listen(PORT, function () {
-  console.log("\nnewsCommenter app running on port " + PORT + "\n");
+  wInfo("newsCommenter app listening on port %s \n", PORT);
 });
 
 // export so usable by test programs
