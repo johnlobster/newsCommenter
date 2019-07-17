@@ -1,13 +1,18 @@
 // main entry to newsCommenter - the server
+
+require("dotenv").config(); // add variables in .env file to process.env
 const express = require("express");
 const mongoose = require("mongoose");
 const exphbs = require("express-handlebars");
+
 
 // winston for debug/logging, morgan for http requests
 const winston = require('winston');
 const morgan = require('morgan');
 
-
+// set up for different modes
+process.env.NODE_ENV = process.env.NODE_ENV || "development";
+const PORT = process.env.PORT || 8080;
 
 // Load all models and initialize
 const db = require("./models");
@@ -19,7 +24,9 @@ var app = express();
 // set up express middleware
 
 // http logging
-app.use(morgan("dev"));
+if (process.env.NODE_ENV === "development") {
+  app.use(morgan("dev"));
+}
 
 // handlebars middleware
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
@@ -34,8 +41,6 @@ app.use(express.static("public"));
 // set up express routes (order is important)
 require("./routes/api-routes")(app);
 require("./routes/html-routes")(app);
-
-const PORT = 8080;
 
 // Start the server
 app.listen(PORT, function () {
