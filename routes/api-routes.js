@@ -1,5 +1,5 @@
 //const winston = require('winston');
-const { wError, wInfo, wDebug } = require("./debug.js")("api-routes.js");
+const { wError, wInfo, wDebug, wObj } = require("./debug.js")("api-routes.js");
 
 
 const scraper = require("./scrape"); 

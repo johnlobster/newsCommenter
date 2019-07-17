@@ -6,7 +6,7 @@
 
 axios = require("axios");
 cheerio = require("cheerio");
-const { wError, wInfo, wDebug } = require("./debug.js")("scrape.js");
+const { wError, wInfo, wDebug, wObj } = require("./debug.js")("scrape.js");
 
 const scrapeUrl = "http://www.theonion.com/"
 module.exports = function (db) {
@@ -17,9 +17,10 @@ module.exports = function (db) {
       .then(function (response) {
         // Then, we load that into cheerio and save it to $ for a shorthand selector
         let $ = cheerio.load(response.data);
-        resolve();
+        resolve(response);
       })
       .catch( function( error) {
+        wError("error in axios get to " + scrapeUrl);
         reject(error);
       });
   });

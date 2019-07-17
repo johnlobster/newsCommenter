@@ -14,19 +14,19 @@ const exphbs = require("express-handlebars");
 const morgan = require('morgan');
 
 // creates logging functions with label server.js
-let {wError, wInfo, wDebug} = require("./routes/debug.js")("server.js");
-
-// test logging
-wInfo("Cool logging, we got %s", "something good");
-wError("An error");
-wDebug("Debug info");
+let {wError, wInfo, wDebug, wObj} = require("./routes/debug.js")("server.js");
 
 // Load all models and initialize
 const db = require("./models");
-mongoose.connect("mongodb://localhost/newsCommenter", { useNewUrlParser: true });
+mongoose.connect("mongodb://localhost/newsCommenter", { useNewUrlParser: true })
+  .then( () => wInfo("Connected to mongoose/mongodb database"))
+  .catch( err => {
+    wError("Problem connecting to mongodb");
+    throw new Error (err);
+  })
 
 // Initialize Express
-var app = express();
+let app = express();
 
 // set up express middleware
 
