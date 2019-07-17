@@ -7,6 +7,8 @@ const exphbs = require("express-handlebars");
 const winston = require('winston');
 const morgan = require('morgan');
 
+
+
 // Load all models and initialize
 const db = require("./models");
 mongoose.connect("mongodb://localhost/newsCommenter", { useNewUrlParser: true });
@@ -15,6 +17,9 @@ mongoose.connect("mongodb://localhost/newsCommenter", { useNewUrlParser: true })
 var app = express();
 
 // set up express middleware
+
+// http logging
+app.use(morgan("dev"));
 
 // handlebars middleware
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
