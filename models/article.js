@@ -20,7 +20,7 @@ const ArticleSchema = new Schema({
     title: String,
     content: String 
   }],
-  created: String // really this is a date, but string is easier to deal with MM-DD-YYYY
+  created: Date // string might be easier to deal with MM-DD-YYYY
 });
 
 // This creates our model from the above schema, using mongoose's model method

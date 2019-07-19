@@ -25,6 +25,13 @@ module.exports = function (app, db) {
     res.json("");
   });
 
+  // create a new note
+  app.post("/api/newNote", function (req, res) {
+    // save note info in mongo db
+    // return note
+    res.json("");
+  });
+
   // create a new user
   app.post("/api/newUser", function (req, res) {
     // save user info in mongo db

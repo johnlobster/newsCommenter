@@ -1,7 +1,8 @@
 /* Styling for newsScraper app */
 /* sass (.sccs) compiles to .css
 
-
+/* colors */
+$bootstrap-primary-blue: #007bff;
 /* styles for main display of articles */
 
 .newsPicture {
@@ -70,8 +71,35 @@
 }
 // used button styling, but don't want button behavior. Specific to btn-primary
 .notAButton:hover {
-  background-color: #007bff; // copied basic btn-primary color
-  border-color: #007bff;
+  background-color: $bootstrap-primary-blue; // copied basic btn-primary color
+  border-color: $bootstrap-primary-blue;
+}
+
+#modalNewsTitle {
+  padding:3px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  height: 3rem;
+}
+#noteModalFoot {
+  display: flex;
+  justify-content: space-between;
+}
+
+.notesBox {
+  padding-left: 5px;
+  padding-right: 5px;
+  padding-top: 3px;
+  padding-bottom: 3px;
+  margin-top: 1px;
+  margin-bottom: 1px;
+  width:100%;
+  color: black;
+  background-color: lightgrey;
+  border-style:solid;
+  border-width: 3px;
+  border-radius: 15px;
+  border-color:brown;
 }
 /* animation */
 @keyframes growBox {

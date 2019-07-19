@@ -1,6 +1,18 @@
-
+<!-- single page used for newsCommenter app. Article data comes from  "allArticles" -->
 <main>
   <div class="container">
+    <div class="row">
+      <div class="col-5">
+         <button id="scrapeButton" class="btn btn-primary">Scrape more articles</button>
+      </div>
+
+      <div class="col-4 justify-content-end">
+        <a class="modal-trigger" href="#helpModal">
+          <button id="helpButton" class="btn btn-primary">Help</button>
+        </a>
+      </div>  
+    </div>
+
     {{#each allArticles as |article i|}}
       <div id="row_{{i}}" class="row mt-1 mb-1" data-rowNo="{{i}}">
         <div class="col-3 newsPicture d-flex flex-wrap  align-items-center" >
@@ -15,18 +27,96 @@
         </div>
         <div class="col-3 newsNotes">
           <div class="btnCombined  btn-group-vertical">
-            <button class="btn btn-sm btn-primary notAButton">No notes</button>
+            <button id="noteCount_{{i}}" class="btn btn-sm btn-primary notAButton">No notes</button>
             <button class="btn btn-sm btn-primary">Show notes</button>
             <button id="createNote_{{i}}" data-create-note="{{i}}" data-article-id="{{_id}}"
-            class="js_createNote btn btn-sm btn-primary">Create note</button>
+              data-image-url="{{pictureUrl}}" data-title="{{title}}"
+              class="js_createNote btn btn-sm btn-primary">Create note</button> 
           </div>
         </div>
       </div>
-      <div class="row d-none" id="notesRow_{{i}}"> <!-- displays notes, hidden until notes->show button clicked -->
-        Some text
+      <div class="row d-none justify-content-md-center" id="notesRow_{{i}}"> <!-- displays notes, hidden until notes->show button clicked -->
+        {{#each notes as |note|}}
+          <div class="col-10">
+            <div class="notesBox mt-1">{{note.content}}</div>
+          </div>
+        {{/each}}
 
       </div>
     {{/each}}
+  </div>
+
+  <!-- modal used for adding a note - shared between all articles -->
+  <div class="modal fade" id="addNoteModal" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+      <div class="modal-content">
+  
+        <div class="modal-header">
+          <div class="container-fluid">
+            <div class="row">
+              <h4>Add a note</h4>
+              <button type="button" class="close" id="closeInstructions1" data-dismiss="modal"
+                aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </div>
+            <div class="row">
+              <div class="col-6">
+                <img id="modalImage" src="" class="newsImg" alt="Article image">
+              </div>
+              <div class="col-6">
+                <p id="modalNewsTitle"></p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="modal-body">
+          <div class="container-fluid">
+            <div class="form-group">
+              <label for="noteContent">Type a note</label>
+              <textarea id="noteContent" class="form-control noteTextArea"
+                rows="15"></textarea>
+            </div>
+          </div>
+        </div>
+  
+        <div id="noteModalFoot" class="modal-footer">
+          <button type="submit" class="btn btn-primary" id="noteSubmitButton">Post</button>
+          <button type="button btn-sm" id="closeInstructions2"
+            class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+  
+      </div>
+    </div>
+  </div>
+
+  <!-- help modal -->
+  <div class="modal fade" id="helpModal" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered modal-md" role="document">
+      <div class="modal-content">
+
+        <div class="modal-header">
+          <h2>Using onion scraper</span></h2>
+          <button type="button" class="close" id="closeInstructions1"
+            data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+
+        <div class="modal-body">
+          <div class="container-fluid">
+
+          </div>
+        </div>
+
+        <div class="modal-footer">
+
+          <button type="button btn-sm" id="closeInstructions2"
+            class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+
+      </div>
+    </div>
   </div>
   <script src="javascript/index.js"></script>
 </main>
