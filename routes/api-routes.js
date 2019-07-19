@@ -28,9 +28,31 @@ module.exports = function (app, db) {
   // create a new note
   app.post("/api/newNote", function (req, res) {
     // save note info in mongo db
-    // return note
-    res.json("");
+    db.Article.findByIdAndUpdate(req.body.articleId, 
+      { 
+        $push: { 
+          notes: { 
+            $each: [{content:req.body.content}],
+            $position: 0
+          }
+        }
+      }
+    , function(err, dbResult) {
+      if (err) {
+        wError("/api/newNote failed to update database");
+        throw new Error(err);
+      }
+      else {
+        wDebug("Added new note");
+        // return success
+        res.json("");
+      }
+    });
+      
+      
   });
+    
+    
 
   // create a new user
   app.post("/api/newUser", function (req, res) {

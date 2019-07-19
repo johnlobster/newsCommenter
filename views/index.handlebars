@@ -1,15 +1,16 @@
 <!-- single page used for newsCommenter app. Article data comes from  "allArticles" -->
 <main>
   <div class="container">
-    <div class="row">
+    <div class="row justify-content-between">
       <div class="col-5">
          <button id="scrapeButton" class="btn btn-primary">Scrape more articles</button>
       </div>
-
-      <div class="col-4 justify-content-end">
-        <a class="modal-trigger" href="#helpModal">
-          <button id="helpButton" class="btn btn-primary">Help</button>
-        </a>
+      <div class="col-4">
+        
+      </div>
+      <div class="col-3 justify-content-end">
+          <button id="helpButton" class="btn btn-primary"
+          data-toggle="modal" data-target="#helpModal">Help</button>
       </div>  
     </div>
 
@@ -28,7 +29,8 @@
         <div class="col-3 newsNotes">
           <div class="btnCombined  btn-group-vertical">
             <button id="noteCount_{{i}}" class="btn btn-sm btn-primary notAButton">No notes</button>
-            <button class="btn btn-sm btn-primary">Show notes</button>
+            <button class="js_showNote btn btn-sm btn-primary"
+              data-show-note="{{i}}">Show notes</button>
             <button id="createNote_{{i}}" data-create-note="{{i}}" data-article-id="{{_id}}"
               data-image-url="{{pictureUrl}}" data-title="{{title}}"
               class="js_createNote btn btn-sm btn-primary">Create note</button> 
@@ -37,7 +39,7 @@
       </div>
       <div class="row d-none justify-content-md-center" id="notesRow_{{i}}"> <!-- displays notes, hidden until notes->show button clicked -->
         {{#each notes as |note|}}
-          <div class="col-10">
+          <div class="col-12">
             <div class="notesBox mt-1">{{note.content}}</div>
           </div>
         {{/each}}
@@ -104,9 +106,21 @@
         </div>
 
         <div class="modal-body">
-          <div class="container-fluid">
-
-          </div>
+          <p>"The onion" is a satirical online newspaper. 
+            The stories are not real, 
+            although have been picked up by news agencies in the past ... </p>
+          <p>This app goes to "The onion", collects the latest stories, stores them,
+            writes a summary
+            and then allows the user to add notes
+          </p>
+          <p>The "Scrape more articles" button fetches more articles from "The onion"</p>
+          <p>Each article is displayed on a separate line. Clicking on the image or the headline will
+            send the user to the relevant page on "The onion" site. Articles are displayed with the most
+            recent ones first.
+          </p>
+          <p>Buttons to the right of the article information allow the user to show all notes made for
+            that article, or add a new note (previous notes will then be shown)
+          </p>
         </div>
 
         <div class="modal-footer">
