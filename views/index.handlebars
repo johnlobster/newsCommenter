@@ -30,6 +30,7 @@
           <div class="btnCombined  btn-group-vertical">
             <button id="noteCount_{{i}}" class="btn btn-sm btn-primary notAButton">No notes</button>
             <button class="js_showNote btn btn-sm btn-primary"
+              data-visibility-toggle="1"
               data-show-note="{{i}}">Show notes</button>
             <button id="createNote_{{i}}" data-create-note="{{i}}" data-article-id="{{_id}}"
               data-image-url="{{pictureUrl}}" data-title="{{title}}"
@@ -118,8 +119,9 @@
             send the user to the relevant page on "The onion" site. Articles are displayed with the most
             recent ones first.
           </p>
-          <p>Buttons to the right of the article information allow the user to show all notes made for
-            that article, or add a new note (previous notes will then be shown)
+          <p>Buttons to the right of the article information allow the user to show all 
+            notes made for that article, or add a new note (previous notes will then be shown).
+            When the show notes button has been pressed, it changes to "hide notes"
           </p>
         </div>
 

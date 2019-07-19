@@ -18,12 +18,20 @@ $(document).ready(function () {
     $("#addNoteModal").modal("show");
   });
 
-  // buttons to show previously written notes
+  // buttons to show previously written notes. If clicked, button toggles to hide notes
   $(".js_showNote").click( function(event) {
     let rowNumber = $(this).attr("data-show-note");
-    $("#notesRow_" + rowNumber).removeClass("d-none");
-    // could change button function to hide and then hide it. WOuld need extra data- element
-    // or something
+    if ($(this).attr("data-visibility-toggle") === "1") {
+      $("#notesRow_" + rowNumber).removeClass("d-none");
+      $(this).text("Hide notes");
+      $(this).attr("data-visibility-toggle", "0");
+    }
+    else {
+      $("#notesRow_" + rowNumber).addClass("d-none");
+      $(this).text("Show notes");
+      $(this).attr("data-visibility-toggle", "1");
+    }
+    
   });
 
   // submit note (from modal)
@@ -46,8 +54,10 @@ $(document).ready(function () {
           $("#addNoteModal").modal("hide");
           // clear textarea
           $("#noteContent").val("");
-          // show existing notes
+          // show existing notes. Change data-visibility-toggle on button so show notes -> hide notes
           $("#notesRow_" + noteRowNumber).removeClass("d-none");
+          $("#row_" + noteRowNumber + " button.js_showNote").text("Hide notes");
+          $("#row_" + noteRowNumber + " button.js_showNote").attr("data-visibility-toggle", "0");
           // add the note to the row without refreshing page
           let newCol = $("<div class=\"col-12\">");
           let newNote = $("<div class= \"notesBox mt-1\">");
