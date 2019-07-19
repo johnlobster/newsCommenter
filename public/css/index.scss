@@ -1,0 +1,91 @@
+/* Styling for newsScraper app */
+/* sass (.sccs) compiles to .css
+
+
+/* styles for main display of articles */
+
+.newsPicture {
+
+}
+
+.newsHeadline {
+  
+}
+
+.newsPicture:hover, .newsHeadline:hover {
+  border-style: solid;
+  border-radius: 10px;
+  border-width: 2px;
+  border-color: lightgrey;
+  box-shadow: 2px, 2px, 10px, lightslategrey;
+  animation-timing-function: linear;
+  animation-name: growBox;
+  animation-duration: 0.5s;
+  animation-iteration-count: 1;
+  animation-fill-mode: both;
+  box-shadow: 10px 10px 5px #888888;
+}
+
+.newsImg {
+  height:auto; 
+  max-width:100%;
+  border-radius: 15px;
+}
+
+
+
+// styling for anchor text, different between visited, hover, active
+.newsHeadlineLink {
+  color: darkslategray;
+}
+
+.newsHeadlineLink:visited {
+  color: lightgrey;
+}
+
+.newsHeadlineLink:hover {
+  text-decoration: none;
+  color: black;
+}
+
+.newsHeadlineLink:active {
+  text-decoration: none;
+  color: red;
+}
+
+// hover for combined buttons
+.btnCombined:hover {
+  animation-timing-function: linear;
+  animation-name: growBox;
+  animation-duration: 0.5s;
+  animation-iteration-count: 1;
+  animation-fill-mode: both;
+  box-shadow: 5px 5px 5px #54488b;
+}
+
+/* reset bootstrap :focus for buttons */
+
+.btn-primary:focus .btn:focus {
+  box-shadow: none;
+}
+// used button styling, but don't want button behavior. Specific to btn-primary
+.notAButton:hover {
+  background-color: #007bff; // copied basic btn-primary color
+  border-color: #007bff;
+}
+/* animation */
+@keyframes growBox {
+  0% {
+    transform: scale(1); }
+  20% {
+    transform: scale(1.02); }
+  40% {
+    transform: scale(1.05); }
+  60% {
+    transform: scale(1.10); }
+  80% {
+    transform: scale(1.08); }
+  100% {
+    transform: scale(1.05); } 
+  }
+

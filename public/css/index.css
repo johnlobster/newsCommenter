@@ -1,0 +1,115 @@
+/* Styling for newsScraper app */
+/* sass (.sccs) compiles to .css
+
+
+/* styles for main display of articles */
+.newsPicture:hover, .newsHeadline:hover {
+  border-style: solid;
+  border-radius: 10px;
+  border-width: 2px;
+  border-color: lightgrey;
+  box-shadow: 2px, 2px, 10px, lightslategrey;
+  -webkit-animation-timing-function: linear;
+          animation-timing-function: linear;
+  -webkit-animation-name: growBox;
+          animation-name: growBox;
+  -webkit-animation-duration: 0.5s;
+          animation-duration: 0.5s;
+  -webkit-animation-iteration-count: 1;
+          animation-iteration-count: 1;
+  -webkit-animation-fill-mode: both;
+          animation-fill-mode: both;
+  box-shadow: 10px 10px 5px #888888;
+}
+
+.newsImg {
+  height: auto;
+  max-width: 100%;
+  border-radius: 15px;
+}
+
+.newsHeadlineLink {
+  color: darkslategray;
+}
+
+.newsHeadlineLink:visited {
+  color: lightgrey;
+}
+
+.newsHeadlineLink:hover {
+  text-decoration: none;
+  color: black;
+}
+
+.newsHeadlineLink:active {
+  text-decoration: none;
+  color: red;
+}
+
+.btnCombined:hover {
+  -webkit-animation-timing-function: linear;
+          animation-timing-function: linear;
+  -webkit-animation-name: growBox;
+          animation-name: growBox;
+  -webkit-animation-duration: 0.5s;
+          animation-duration: 0.5s;
+  -webkit-animation-iteration-count: 1;
+          animation-iteration-count: 1;
+  -webkit-animation-fill-mode: both;
+          animation-fill-mode: both;
+  box-shadow: 5px 5px 5px #54488b;
+}
+
+/* reset bootstrap :focus for buttons */
+.btn-primary:focus .btn:focus {
+  box-shadow: none;
+}
+
+.notAButton:hover {
+  background-color: #007bff;
+  border-color: #007bff;
+}
+
+/* animation */
+@-webkit-keyframes growBox {
+  0% {
+    transform: scale(1);
+  }
+  20% {
+    transform: scale(1.02);
+  }
+  40% {
+    transform: scale(1.05);
+  }
+  60% {
+    transform: scale(1.1);
+  }
+  80% {
+    transform: scale(1.08);
+  }
+  100% {
+    transform: scale(1.05);
+  }
+}
+@keyframes growBox {
+  0% {
+    transform: scale(1);
+  }
+  20% {
+    transform: scale(1.02);
+  }
+  40% {
+    transform: scale(1.05);
+  }
+  60% {
+    transform: scale(1.1);
+  }
+  80% {
+    transform: scale(1.08);
+  }
+  100% {
+    transform: scale(1.05);
+  }
+}
+
+/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImluZGV4LnNjc3MiLCJ0ZW1wLmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQSxnQ0FBQTtBQUNBOzs7d0NBQUE7QUFhQTtFQUNFLG1CQUFBO0VBQ0EsbUJBQUE7RUFDQSxpQkFBQTtFQUNBLHVCQUFBO0VBQ0EsMENBQUE7RUFDQSx5Q0FBQTtVQUFBLGlDQUFBO0VBQ0EsK0JBQUE7VUFBQSx1QkFBQTtFQUNBLGdDQUFBO1VBQUEsd0JBQUE7RUFDQSxvQ0FBQTtVQUFBLDRCQUFBO0VBQ0EsaUNBQUE7VUFBQSx5QkFBQTtFQUNBLGlDQUFBO0FDUkY7O0FEV0E7RUFDRSxZQUFBO0VBQ0EsZUFBQTtFQUNBLG1CQUFBO0FDUkY7O0FEY0E7RUFDRSxvQkFBQTtBQ1hGOztBRGNBO0VBQ0UsZ0JBQUE7QUNYRjs7QURjQTtFQUNFLHFCQUFBO0VBQ0EsWUFBQTtBQ1hGOztBRGNBO0VBQ0UscUJBQUE7RUFDQSxVQUFBO0FDWEY7O0FEZUE7RUFDRSx5Q0FBQTtVQUFBLGlDQUFBO0VBQ0EsK0JBQUE7VUFBQSx1QkFBQTtFQUNBLGdDQUFBO1VBQUEsd0JBQUE7RUFDQSxvQ0FBQTtVQUFBLDRCQUFBO0VBQ0EsaUNBQUE7VUFBQSx5QkFBQTtFQUNBLCtCQUFBO0FDWkY7O0FEZUEsdUNBQUE7QUFFQTtFQUNFLGdCQUFBO0FDYkY7O0FEZ0JBO0VBQ0UseUJBQUE7RUFDQSxxQkFBQTtBQ2JGOztBRGVBLGNBQUE7QUFDQTtFQUNFO0lBQ0UsbUJBQUE7RUNaRjtFRGFBO0lBQ0Usc0JBQUE7RUNYRjtFRFlBO0lBQ0Usc0JBQUE7RUNWRjtFRFdBO0lBQ0UscUJBQUE7RUNURjtFRFVBO0lBQ0Usc0JBQUE7RUNSRjtFRFNBO0lBQ0Usc0JBQUE7RUNQRjtBQUNGO0FETkE7RUFDRTtJQUNFLG1CQUFBO0VDWkY7RURhQTtJQUNFLHNCQUFBO0VDWEY7RURZQTtJQUNFLHNCQUFBO0VDVkY7RURXQTtJQUNFLHFCQUFBO0VDVEY7RURVQTtJQUNFLHNCQUFBO0VDUkY7RURTQTtJQUNFLHNCQUFBO0VDUEY7QUFDRiIsImZpbGUiOiJpbmRleC5jc3MifQ== */

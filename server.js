@@ -46,8 +46,8 @@ app.use(express.json());
 app.use(express.static("public"));
 
 // set up express routes (order is important)
-require("./routes/api-routes")(app);
-require("./routes/html-routes")(app);
+require("./routes/api-routes")(app,db);
+require("./routes/html-routes")(app,db);
 
 // Start the server
 app.listen(PORT, function () {

@@ -1,4 +1,32 @@
 
 <main>
-  <h4>Index page for newsScraper</h4>
+  <div class="container">
+    {{#each allArticles as |article i|}}
+      <div id="row_{{i}}" class="row mt-1 mb-1" data-rowNo="{{i}}">
+        <div class="col-3 newsPicture d-flex flex-wrap  align-items-center" >
+          <a href="{{fullArticleUrl}}">
+            <img src="{{pictureUrl}}" class="newsImg">
+          </a>
+        </div>
+        <div class="col-6 newsHeadline">
+          <a href="{{fullArticleUrl}}" class="newsHeadlineLink">
+            <h5 class="mt-1">{{title}}</h5>
+          </a>
+        </div>
+        <div class="col-3 newsNotes">
+          <div class="btnCombined  btn-group-vertical">
+            <button class="btn btn-sm btn-primary notAButton">No notes</button>
+            <button class="btn btn-sm btn-primary">Show notes</button>
+            <button id="createNote_{{i}}" data-create-note="{{i}}" data-article-id="{{_id}}"
+            class="js_createNote btn btn-sm btn-primary">Create note</button>
+          </div>
+        </div>
+      </div>
+      <div class="row d-none" id="notesRow_{{i}}"> <!-- displays notes, hidden until notes->show button clicked -->
+        Some text
+
+      </div>
+    {{/each}}
+  </div>
+  <script src="javascript/index.js"></script>
 </main>
