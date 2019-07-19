@@ -70,7 +70,17 @@ $bootstrap-primary-blue: #007bff;
   box-shadow: none;
 }
 // used button styling, but don't want button behavior. Specific to btn-primary
+.notAButton:visited {
+  box-shadow: none;
+}
 .notAButton:hover {
+  background-color: $bootstrap-primary-blue; // copied basic btn-primary color
+  border-color: $bootstrap-primary-blue;
+}
+.notAButton:active {
+  box-shadow: none;
+}
+.notAButton:focus {
   background-color: $bootstrap-primary-blue; // copied basic btn-primary color
   border-color: $bootstrap-primary-blue;
 }
