@@ -7,6 +7,34 @@ $(document).ready(function () {
   let noteRowNumber = 0;
   let noteArticleId = 0;
 
+  // button to scrape more articles
+  $("#scrapeButton").click( function (evt) {
+    // make api request to scrape
+    $.ajax({
+      url: `/api/scrape`,
+      method: "GET",
+      data: JSON.stringify({
+        content: noteContent,
+        articleId: noteArticleId
+      }),
+      contentType: "application/json; charset=utf-8",
+      dataType: "json"
+    })
+    .done(function (body, textStatus, xhdr) {
+      if (textStatus === "success") {
+        // clean return from scraper so redirect to "/"
+        console.log("scraped ok");
+        window.location = "/";
+      }
+      else {
+        console.log("AJAX /api/scrape GET did not succeed (" + textStatus + ")");
+      }
+    })
+    .fail((xhr) => {
+      console.log("AJAX /api/scrape GET failed with error code " + xhr.status);
+    });
+  });
+  
   // buttons to create a new note
   $(".js_createNote").click( function(evt) {
     noteRowNumber= $(this).attr("data-create-note");
