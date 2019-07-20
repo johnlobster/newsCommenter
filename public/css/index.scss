@@ -73,6 +73,11 @@ $bootstrap-primary-blue: #007bff;
 .notAButton:visited {
   box-shadow: none;
 }
+.notAButton:focus {
+  background-color: $bootstrap-primary-blue; // copied basic btn-primary color
+  border-color: $bootstrap-primary-blue;
+}
+
 .notAButton:hover {
   background-color: $bootstrap-primary-blue; // copied basic btn-primary color
   border-color: $bootstrap-primary-blue;
@@ -80,9 +85,14 @@ $bootstrap-primary-blue: #007bff;
 .notAButton:active {
   box-shadow: none;
 }
-.notAButton:focus {
-  background-color: $bootstrap-primary-blue; // copied basic btn-primary color
-  border-color: $bootstrap-primary-blue;
+
+#helpModalLogoBox {
+  height: 4rem;
+}
+
+#helpModalOnionLogo {
+  position:absolute;
+  top: -6rem;
 }
 
 #modalNewsTitle {
