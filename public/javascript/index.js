@@ -23,7 +23,7 @@ $(document).ready(function () {
     .done(function (body, textStatus, xhdr) {
       if (textStatus === "success") {
         // clean return from scraper so redirect to "/"
-        console.log("scraped ok");
+        // console.log("scraped ok");
         window.location = "/";
       }
       else {
@@ -46,7 +46,7 @@ $(document).ready(function () {
     $("#addNoteModal").modal("show");
   });
 
-  // buttons to show previously written notes. If clicked, button toggles to hide notes
+  // buttons to show previously written notes. If clicked, button toggles to "hide notes"
   $(".js_showNote").click( function(event) {
     let rowNumber = $(this).attr("data-show-note");
     if ($(this).attr("data-visibility-toggle") === "1") {
@@ -80,7 +80,7 @@ $(document).ready(function () {
         if (textStatus === "success") {
           // hide modal
           $("#addNoteModal").modal("hide");
-          // clear textarea
+          // clear textarea in modal
           $("#noteContent").val("");
           // show existing notes. Change data-visibility-toggle on button so show notes -> hide notes
           $("#notesRow_" + noteRowNumber).removeClass("d-none");
@@ -92,8 +92,6 @@ $(document).ready(function () {
           newNote.text(noteContent);
           newCol.append(newNote);
           $("#notesRow_" + noteRowNumber).prepend(newCol);
-          // $("#notesRow_" + noteRowNumber).prepend(newNote);
-
         }
         else {
           console.log("create note AJAX POST did not succeed (" + textStatus +")");

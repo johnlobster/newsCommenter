@@ -21,6 +21,9 @@ module.exports = function (db) {
         let $ = cheerio.load(response.data);
         let newArticle = {};
         let newArticles = [];
+        // parse the html and extract image URL, title and full article URL
+        // website data is not consistent, so this parsing is a little complicated
+        // results are put into an array, which is then inserted into the mongodb database
         $(".curation-mountain .zone__item").each(function (i, element) {
           newArticle = {};
           // wDebug("Searching loop iteration %d", i);
@@ -58,8 +61,29 @@ module.exports = function (db) {
         return(newArticles);
       })
       .then(allArticles => {
+        // allArticles is an array of article objects
+        // save data to mongodb database
         wDebug("allArticles has %d articles", allArticles.length);
-        db.Article.create(allArticles)
+        let createdDate = new Date();
+        allArticles.forEach( (article) => {
+          // check to see whether article already exists in database, so not saved twice
+          db.Article.findOne({title: article.title})
+          .then(dbArticle => {
+            if (! dbArticle) {
+              // didn't find an existing article, so create one
+              // add created date before saving
+              article.created = createdDate;
+              wObj(article);
+              db.Article.create(article);
+              wDebug("Added article %s to database", article.fullArticleUrl);
+            }
+          })
+          .catch( err => {
+            wError("mongoose access failed whilst adding articles to database");
+            throw new Error(err);
+          });
+
+        });
       })
       .then( () => {
         resolve(true);
