@@ -9,6 +9,14 @@ $bootstrap-primary-blue: #007bff;
   font-family: 'Frijole', cursive;
 }
 
+#mainTitleBox h1 {
+  font-size: 6vw;
+} 
+
+#mainTitleBox img {
+  height: 4rem;
+}
+
 .newsPicture:hover, .newsHeadline:hover {
   border-style: solid;
   border-radius: 10px;

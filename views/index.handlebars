@@ -1,15 +1,16 @@
 <!-- single page used for newsCommenter app. Article data comes from  "allArticles" -->
 <main>
-  <!-- row that has scrape button and help button -->
   <div class="container">
-    <div class="row justify-content-between">
-      <div class="col-5">
+
+    <!-- row that has scrape button and help button -->
+    <div class="row justify-content-between mt-3 mb-3">
+      <div class="col-12 col-md-5">
          <button id="scrapeButton" class="btn btn-primary">Scrape more articles</button>
       </div>
-      <div class="col-4">
+      <!-- <div class="col-12 col-md-4">
         
-      </div>
-      <div class="col-3 justify-content-end">
+      </div> -->
+      <div class="col-12 col-md-3 justify-content-end">
           <button id="helpButton" class="btn btn-primary"
           data-toggle="modal" data-target="#helpModal">Help</button>
       </div>  
@@ -17,17 +18,17 @@
 
     {{#each allArticles as |article i|}}
       <div id="row_{{i}}" class="row mt-1 mb-1" data-rowNo="{{i}}">
-        <div class="col-3 newsPicture d-flex flex-wrap  align-items-center" >
+        <div class="col-xs-12 col-sm-4 col-md-3 newsPicture d-flex flex-wrap  align-items-center" >
           <a href="{{fullArticleUrl}}">
             <img src="{{pictureUrl}}" class="newsImg">
           </a>
         </div>
-        <div class="col-6 newsHeadline">
+        <div class="col-xs-12 col-sm-8 col-md-6 newsHeadline">
           <a href="{{fullArticleUrl}}" class="newsHeadlineLink">
             <h5 class="mt-1">{{title}}</h5>
           </a>
         </div>
-        <div class="col-3 newsNotes">
+        <div class="col-xs-12 col-sm-3 col-md-3 newsNotes">
           <div class="btnCombined  btn-group-vertical">
             <button id="noteCount_{{i}}" class="btn btn-sm btn-primary notAButton">{{notes.length}} notes</button>
             <button class="js_showNote btn btn-sm btn-primary"
